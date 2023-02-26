@@ -1,0 +1,28 @@
+@import-normalize;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Nunito:wght@400;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /*-----TYPOGRAPHY--------*/
+  --family: "Noto Serif", serif;
+  --fs-sm: 16px;
+  --fs-md: 18px;
+  --fs-lg: 24px;
+  --fw-bold: 800;
+
+  /*-----OTHER--------*/
+  --radius: 0.5rem;
+  --color-bg: #f1efef;
+  --color-text: #413e3e;
+}
+
+body {
+  margin: 0;
+  font-family: var(--family);
+  color: var(--color-text);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+}
