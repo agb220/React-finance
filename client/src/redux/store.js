@@ -1,9 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-import itemsSlice from "./slices/itemsSlice";
+import tickersReducer from "./reducers/tickersReducer";
+import userTickersReducer from "./reducers/userTickersReducer";
 
-export const store = configureStore({
-  reducer: {
-    itemsSlice: itemsSlice,
-  },
+const rootReducer = combineReducers({
+  tickersReducer: tickersReducer,
+  userTickersReducer: userTickersReducer,
 });
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
+
+export default store;

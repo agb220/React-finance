@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import styled from "styled-components";
 
@@ -20,33 +20,67 @@ const ItemBody = styled.div`
   align-items: center;
 `;
 const ItemLogo = styled.div`
+  width: 70px;
+  text-align: center;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
 `;
-const ItemName = styled.div``;
-const ItemPrice = styled.div``;
-const ItemChange = styled.div`
-  border-radius: var(--radius);
-  background-color: green;
-  border: 1px solid green;
-  padding: 0.5rem 1rem;
+const ItemName = styled.div`
+  text-align: center;
+  width: 70px;
 `;
-const ItemPercent = styled.div``;
+const ItemPrice = styled.div`
+  text-align: center;
+  width: 70px;
+`;
+const ItemChange = styled.div`
+  text-align: center;
+  width: 50px;
+`;
+const ItemPercent = styled.div`
+  text-align: center;
+  width: 50px;
+`;
+const ItemButton = styled.a`
+  text-align: center;
+  width: 50px;
+`;
+function Item({ ticker, onClickAddTickers }) {
+  const onAddUserTickers = () => {
+    const userTicker = {
+      ...ticker,
+    };
 
-function Item({ ticker, price, change, change_percent }) {
-  console.log("ticker", ticker);
+    onClickAddTickers(userTicker);
+    console.log("click", userTicker);
+  };
+
+  const nameTicker = {
+    AAPL: "Apple",
+    GOOGL: "Alphabet",
+    MSFT: "Microsoft",
+    AMZN: "Amazon",
+    FB: "Facebook",
+    TSLA: "Tesla",
+  };
+
+  // console.log("onAddProduct", onAddProduct);
+
   return (
     <>
       <Wrapper>
         <ItemBody>
-          <ItemLogo>{ticker}</ItemLogo>
+          <ItemLogo>{ticker.ticker}</ItemLogo>
           <ItemName>Apple</ItemName>
-          <ItemPrice>{price}</ItemPrice>
-          <ItemChange>64.52</ItemChange>
-          <ItemPercent> 0.84 %</ItemPercent>
+          <ItemPrice>{ticker.price}</ItemPrice>
+          <ItemChange>{ticker.change}</ItemChange>
+          <ItemPercent> {ticker.change_percent}</ItemPercent>
           <IoArrowDownOutline size="20px" />
           <IoArrowUpOutline size="20px" />
-          <IoAddCircleOutline size="20px" />
+          <ItemButton onClick={() => console.log("clickkkkkk")}>
+            Click
+            <IoAddCircleOutline size="20px" />
+          </ItemButton>
           <IoTrashOutline size="20px" />
         </ItemBody>
       </Wrapper>

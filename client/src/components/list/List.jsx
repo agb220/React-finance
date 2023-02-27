@@ -1,6 +1,10 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import styled from "styled-components";
+
+import { setUserTickers } from "../../redux/actions/userTickersAction";
 
 import Item from "./Item";
 
@@ -16,11 +20,26 @@ const Title = styled.h1`
 `;
 
 function List() {
+  const dispatch = useDispatch();
+  const tickers = useSelector(({ tickersReducer }) => tickersReducer.tickers);
+
+  const handleAddUserTickers = (tickers) => {
+    dispatch(setUserTickers(tickers));
+  };
+
+  console.log("ticker List", tickers);
   return (
     <>
       <Wrapper>
         <Title>List tickers</Title>
-        <Item />
+        {tickers &&
+          tickers.map((ticker, index) => (
+            <Item
+              ticker={ticker}
+              key={ticker.ticker + index}
+              onClickAddTickers={handleAddUserTickers}
+            />
+          ))}
       </Wrapper>
     </>
   );

@@ -29,14 +29,12 @@ const Input = styled.input.attrs({
 `;
 
 function Search() {
-  // const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   return (
     <>
       <InputContainer>
         <IoSearch />
-        <Input
-        // onChange={(e) => setSearch(e.target.value)} value={search}
-        />
+        <Input onChange={(e) => setSearch(e.target.value)} value={search} />
       </InputContainer>
     </>
   );
