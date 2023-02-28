@@ -10,9 +10,19 @@ import UserItem from "./UserItem";
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 2rem 0;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
+`;
+const UserlistTitle = styled.h2`
+  font-size: var(--fs-lg);
+  color: #355e3b;
+`;
+const UserlistText = styled.div`
+  padding: 1rem 0;
+  font-size: 24px;
+  color: #cecece;
+  margin: 10px 300px;
 `;
 
 function UserList() {
@@ -36,17 +46,21 @@ function UserList() {
 
   return (
     <Wrapper>
-      <h2>User List</h2>
-      {addedTickers.map((ticker, index) => (
-        <UserItem
-          ticker={ticker.ticker}
-          price={ticker.price}
-          change={ticker.change}
-          percent={ticker.change_percent}
-          key={ticker.ticker + index}
-          onRemove={onRemoveUserTickers}
-        />
-      ))}
+      <UserlistTitle>User List</UserlistTitle>
+      {addedTickers.length === 0 ? (
+        <UserlistText>You do not add any tickers to your list yet</UserlistText>
+      ) : (
+        addedTickers.map((ticker, index) => (
+          <UserItem
+            ticker={ticker.ticker}
+            price={ticker.price}
+            change={ticker.change}
+            percent={ticker.change_percent}
+            key={ticker.ticker + index}
+            onRemove={onRemoveUserTickers}
+          />
+        ))
+      )}
     </Wrapper>
   );
 }

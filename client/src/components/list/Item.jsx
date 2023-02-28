@@ -17,6 +17,9 @@ const ItemBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #cecece;
+  padding-bottom: 0.5rem;
+  box-shadow: 2px 5px #f6f6f6;
 `;
 const ItemLogo = styled.div`
   width: 70px;
@@ -42,8 +45,17 @@ const ItemPercent = styled.div`
 `;
 const ItemButton = styled.a`
   text-align: center;
-  width: 50px;
+  width: 70px;
+  display: flex;
+  cursor: pointer;
 `;
+
+const ButtonText = styled.span`
+  font-size: 10px;
+  text-align: start;
+  margin-left: 2px;
+`;
+
 function Item({ ticker, onClickAddTickers }) {
   const onAddUserTickers = () => {
     const userTicker = {
@@ -74,10 +86,11 @@ function Item({ ticker, onClickAddTickers }) {
           <ItemPrice>{ticker.price}</ItemPrice>
           <ItemChange>{ticker.change}</ItemChange>
           <ItemPercent> {ticker.change_percent}</ItemPercent>
-          <IoArrowDownOutline size="20px" />
-          <IoArrowUpOutline size="20px" />
+          <IoArrowUpOutline size="20px" color="green" />
+          <IoArrowDownOutline size="20px" color="red" />
           <ItemButton onClick={onAddUserTickers}>
             <IoAddCircleOutline size="20px" />
+            <ButtonText>Add to User List</ButtonText>
           </ItemButton>
         </ItemBody>
       </Wrapper>

@@ -1,5 +1,6 @@
 const initialState = {
   tickers: [],
+  isLoaded: false,
 };
 
 const tickersReducer = (state = initialState, action) => {
@@ -8,7 +9,15 @@ const tickersReducer = (state = initialState, action) => {
       return {
         ...state,
         tickers: action.payload,
+        isLoaded: true,
       };
+
+    case "SET_LOADED":
+      return {
+        ...state,
+        isLoaded: action.payload,
+      };
+
     default:
       return state;
   }

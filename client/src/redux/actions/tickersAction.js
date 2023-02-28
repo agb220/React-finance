@@ -15,3 +15,8 @@ export const setTickers = (tickers) => ({
   type: "SET_TICKERS",
   payload: tickers,
 });
+
+export const setLoaded = (payload) => ({
+  type: "SET_LOADED",
+  payload,
+});

@@ -17,6 +17,9 @@ const ItemBody = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #355e3b;
+  padding-bottom: 0.5rem;
+  box-shadow: 2px 5px #f6f6f6;
 `;
 const ItemLogo = styled.div`
   width: 70px;
@@ -41,9 +44,19 @@ const ItemPercent = styled.div`
   width: 50px;
 `;
 const ItemButton = styled.a`
+  display: flex;
   text-align: center;
-  width: 50px;
+  width: 70px;
+  cursor: pointer;
 `;
+const ButtonText = styled.span`
+  font-size: 10px;
+  text-align: start;
+  margin-left: 2px;
+  align-items: center;
+  margin-top: 5px;
+`;
+
 function UserItem({ ticker, price, change, percent, onRemove }) {
   // const onAddUserTickers = () => {
   //   const userTicker = {
@@ -78,10 +91,11 @@ function UserItem({ ticker, price, change, percent, onRemove }) {
           <ItemPrice>{price}</ItemPrice>
           <ItemChange>{change}</ItemChange>
           <ItemPercent> {percent}</ItemPercent>
-          <IoArrowDownOutline size="20px" />
-          <IoArrowUpOutline size="20px" />
+          <IoArrowUpOutline size="20px" color="green" />
+          <IoArrowDownOutline size="20px" color="red" />
           <ItemButton onClick={handleRemoveClick}>
             <IoTrashOutline size="20px" />
+            <ButtonText>Delete</ButtonText>
           </ItemButton>
         </ItemBody>
       </Wrapper>

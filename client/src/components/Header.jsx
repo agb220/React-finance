@@ -10,13 +10,14 @@ const HeaderEl = styled.header`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 20px 0px;
+  padding: 1.5rem 0;
 `;
 
 const Logo = styled.div`
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   text-transform: uppercase;
+  color: #6495ed;
 `;
 
 function Header() {

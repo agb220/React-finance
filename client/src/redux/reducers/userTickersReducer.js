@@ -7,7 +7,7 @@ const userTickersReducer = (state = initialState, action) => {
     case "SET_USER_TICKERS":
       const currentUserTicker = !state.tickers[action.payload.ticker]
         ? [action.payload]
-        : [...state.tickers[action.payload.ticker].tickers, action.payload];
+        : [...state.tickers[action.payload.ticker].tickers];
 
       const newTickers = {
         ...state.tickers,
