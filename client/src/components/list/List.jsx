@@ -27,7 +27,7 @@ function List() {
     dispatch(setUserTickers(tickers));
   };
 
-  console.log("ticker List", tickers);
+  // console.log("ticker List", tickers);
   return (
     <>
       <Wrapper>

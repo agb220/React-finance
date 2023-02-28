@@ -2,7 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 
-import { IoAddCircleOutline } from "react-icons/io5";
+import { IoTrashOutline } from "react-icons/io5";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { IoArrowUpOutline } from "react-icons/io5";
 
@@ -44,15 +44,15 @@ const ItemButton = styled.a`
   text-align: center;
   width: 50px;
 `;
-function Item({ ticker, onClickAddTickers }) {
-  const onAddUserTickers = () => {
-    const userTicker = {
-      ...ticker,
-    };
+function UserItem({ ticker, price, change, percent, onRemove }) {
+  // const onAddUserTickers = () => {
+  //   const userTicker = {
+  //     ...ticker,
+  //   };
 
-    onClickAddTickers(userTicker);
-    // console.log("click", userTicker);
-  };
+  //   onClickAddTickers(userTicker);
+  //   // console.log("click", userTicker);
+  // };
 
   const nameTicker = {
     AAPL: "Apple",
@@ -63,21 +63,25 @@ function Item({ ticker, onClickAddTickers }) {
     TSLA: "Tesla",
   };
 
+  const handleRemoveClick = () => {
+    onRemove(ticker);
+  };
+
   // console.log("onAddProduct", onAddProduct);
 
   return (
     <>
       <Wrapper>
         <ItemBody>
-          <ItemLogo>{ticker.ticker}</ItemLogo>
+          <ItemLogo>{ticker}</ItemLogo>
           <ItemName>Apple</ItemName>
-          <ItemPrice>{ticker.price}</ItemPrice>
-          <ItemChange>{ticker.change}</ItemChange>
-          <ItemPercent> {ticker.change_percent}</ItemPercent>
+          <ItemPrice>{price}</ItemPrice>
+          <ItemChange>{change}</ItemChange>
+          <ItemPercent> {percent}</ItemPercent>
           <IoArrowDownOutline size="20px" />
           <IoArrowUpOutline size="20px" />
-          <ItemButton onClick={onAddUserTickers}>
-            <IoAddCircleOutline size="20px" />
+          <ItemButton onClick={handleRemoveClick}>
+            <IoTrashOutline size="20px" />
           </ItemButton>
         </ItemBody>
       </Wrapper>
@@ -85,4 +89,4 @@ function Item({ ticker, onClickAddTickers }) {
   );
 }
 
-export default Item;
+export default UserItem;
