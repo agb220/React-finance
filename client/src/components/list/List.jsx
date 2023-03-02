@@ -24,12 +24,20 @@ function List() {
   const dispatch = useDispatch();
   const tickers = useSelector(({ tickersReducer }) => tickersReducer.tickers);
   const isLoaded = useSelector(({ tickersReducer }) => tickersReducer.isLoaded);
+  // const history = useSelector(({ tickersReducer }) => tickersReducer.history);
 
   const handleAddUserTickers = (tickers) => {
     dispatch(setUserTickers(tickers));
   };
 
-  // console.log("ticker List", tickers);
+  //console.log("history 0bj", Object.keys(history));
+  // console.log("history", history);
+  // console.log(" tickers.price", tickers);
+
+  // const prices = tickers.map((item) => {
+  //   console.log(item.price);
+  // });
+  // console.log("prices", prices);
   return (
     <>
       <Wrapper>

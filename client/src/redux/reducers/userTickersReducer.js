@@ -1,12 +1,12 @@
 const initialState = {
-  tickers: {},
+  tickers: [],
 };
 
 const userTickersReducer = (state = initialState, action) => {
   switch (action.type) {
     case "SET_USER_TICKERS":
       const currentUserTicker = !state.tickers[action.payload.ticker]
-        ? [action.payload]
+        ? [action.payload.ticker]
         : [...state.tickers[action.payload.ticker].tickers];
 
       const newTickers = {

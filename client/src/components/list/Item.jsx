@@ -2,6 +2,8 @@ import React from "react";
 
 import styled from "styled-components";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoArrowDownOutline } from "react-icons/io5";
 import { IoArrowUpOutline } from "react-icons/io5";
@@ -26,10 +28,6 @@ const ItemLogo = styled.div`
   text-align: center;
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
-`;
-const ItemName = styled.div`
-  text-align: center;
-  width: 70px;
 `;
 const ItemPrice = styled.div`
   text-align: center;
@@ -57,6 +55,13 @@ const ButtonText = styled.span`
 `;
 
 function Item({ ticker, onClickAddTickers }) {
+  const history = useSelector(({ tickersReducer }) => tickersReducer.history);
+
+  const prices = useSelector(({ tickersReducer }) => {
+    const prices = tickersReducer.tickers.map((item) => item.price);
+    return prices.filter((item, index) => prices.indexOf(item) === index);
+  });
+
   const onAddUserTickers = () => {
     const userTicker = {
       ...ticker,
@@ -66,23 +71,14 @@ function Item({ ticker, onClickAddTickers }) {
     // console.log("click", userTicker);
   };
 
-  const nameTicker = {
-    AAPL: "Apple",
-    GOOGL: "Alphabet",
-    MSFT: "Microsoft",
-    AMZN: "Amazon",
-    FB: "Facebook",
-    TSLA: "Tesla",
-  };
-
-  // console.log("onAddProduct", onAddProduct);
+  // console.log("history", Object.values(history));
+  console.log("prices", prices, history);
 
   return (
     <>
       <Wrapper>
         <ItemBody>
           <ItemLogo>{ticker.ticker}</ItemLogo>
-          <ItemName>Apple</ItemName>
           <ItemPrice>{ticker.price}</ItemPrice>
           <ItemChange>{ticker.change}</ItemChange>
           <ItemPercent> {ticker.change_percent}</ItemPercent>

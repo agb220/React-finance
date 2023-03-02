@@ -27,10 +27,6 @@ const ItemLogo = styled.div`
   font-size: var(--fs-md);
   font-weight: var(--fw-bold);
 `;
-const ItemName = styled.div`
-  text-align: center;
-  width: 70px;
-`;
 const ItemPrice = styled.div`
   text-align: center;
   width: 70px;
@@ -58,24 +54,6 @@ const ButtonText = styled.span`
 `;
 
 function UserItem({ ticker, price, change, percent, onRemove }) {
-  // const onAddUserTickers = () => {
-  //   const userTicker = {
-  //     ...ticker,
-  //   };
-
-  //   onClickAddTickers(userTicker);
-  //   // console.log("click", userTicker);
-  // };
-
-  const nameTicker = {
-    AAPL: "Apple",
-    GOOGL: "Alphabet",
-    MSFT: "Microsoft",
-    AMZN: "Amazon",
-    FB: "Facebook",
-    TSLA: "Tesla",
-  };
-
   const handleRemoveClick = () => {
     onRemove(ticker);
   };
@@ -87,7 +65,6 @@ function UserItem({ ticker, price, change, percent, onRemove }) {
       <Wrapper>
         <ItemBody>
           <ItemLogo>{ticker}</ItemLogo>
-          <ItemName>Apple</ItemName>
           <ItemPrice>{price}</ItemPrice>
           <ItemChange>{change}</ItemChange>
           <ItemPercent> {percent}</ItemPercent>
