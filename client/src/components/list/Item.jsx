@@ -72,7 +72,7 @@ function Item({ ticker, onClickAddTickers }) {
   };
 
   // console.log("history", Object.values(history));
-  console.log("prices", prices, history);
+  // console.log("prices", prices, history);
 
   return (
     <>
