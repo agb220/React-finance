@@ -1,8 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
-
-import { useSelector, useDispatch } from "react-redux";
 
 import { IoAddCircleOutline } from "react-icons/io5";
 import { IoArrowDownOutline } from "react-icons/io5";
@@ -57,10 +56,7 @@ const ButtonText = styled.span`
 function Item({ ticker, onClickAddTickers }) {
   const history = useSelector(({ tickersReducer }) => tickersReducer.history);
 
-  const prices = useSelector(({ tickersReducer }) => {
-    const prices = tickersReducer.tickers.map((item) => item.price);
-    return prices.filter((item, index) => prices.indexOf(item) === index);
-  });
+  const tickerHistory = history[ticker.ticker];
 
   const onAddUserTickers = () => {
     const userTicker = {
@@ -68,11 +64,7 @@ function Item({ ticker, onClickAddTickers }) {
     };
 
     onClickAddTickers(userTicker);
-    // console.log("click", userTicker);
   };
-
-  // console.log("history", Object.values(history));
-  // console.log("prices", prices, history);
 
   return (
     <>
@@ -82,8 +74,13 @@ function Item({ ticker, onClickAddTickers }) {
           <ItemPrice>{ticker.price}</ItemPrice>
           <ItemChange>{ticker.change}</ItemChange>
           <ItemPercent> {ticker.change_percent}</ItemPercent>
-          <IoArrowUpOutline size="20px" color="green" />
-          <IoArrowDownOutline size="20px" color="red" />
+          {tickerHistory[tickerHistory.length - 1] >
+            tickerHistory[tickerHistory.length - 2] ||
+          tickerHistory[tickerHistory.length - 2] === undefined ? (
+            <IoArrowUpOutline size="20px" color="green" />
+          ) : (
+            <IoArrowDownOutline size="20px" color="red" />
+          )}
           <ItemButton onClick={onAddUserTickers}>
             <IoAddCircleOutline size="20px" />
             <ButtonText>Add to User List</ButtonText>

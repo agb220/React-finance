@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { Container } from "./Container";
 
 import List from "./list/List";
-import UserList from "./list/UserList";
+import UserList from "./userList/UserList";
 
 const Wrapper = styled.main`
   height: 100%;

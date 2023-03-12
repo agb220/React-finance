@@ -30,7 +30,7 @@ function UserList() {
   const userTickers = useSelector(
     ({ userTickersReducer }) => userTickersReducer.tickers
   );
-  const data = useSelector(({ tickersReducer }) => tickersReducer.tickers);
+  const tickers = useSelector(({ tickersReducer }) => tickersReducer.tickers);
 
   const addedTickers = Object.keys(userTickers).map((key) => {
     return key;
@@ -48,7 +48,7 @@ function UserList() {
       {addedTickers.length === 0 ? (
         <UserlistText>You do not add any tickers to your list yet</UserlistText>
       ) : (
-        data
+        tickers
           .filter(({ ticker }) => addedTickers.indexOf(ticker) !== -1)
           .map((ticker, index) => (
             <UserItem

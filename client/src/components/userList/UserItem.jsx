@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import styled from "styled-components";
 
@@ -54,11 +55,11 @@ const ButtonText = styled.span`
 `;
 
 function UserItem({ ticker, price, change, percent, onRemove }) {
+  const history = useSelector(({ tickersReducer }) => tickersReducer.history);
+  const tickerHistory = history[ticker];
   const handleRemoveClick = () => {
     onRemove(ticker);
   };
-
-  // console.log("onAddProduct", onAddProduct);
 
   return (
     <>
@@ -68,8 +69,13 @@ function UserItem({ ticker, price, change, percent, onRemove }) {
           <ItemPrice>{price}</ItemPrice>
           <ItemChange>{change}</ItemChange>
           <ItemPercent> {percent}</ItemPercent>
-          <IoArrowUpOutline size="20px" color="green" />
-          <IoArrowDownOutline size="20px" color="red" />
+          {tickerHistory[tickerHistory.length - 1] >
+            tickerHistory[tickerHistory.length - 2] ||
+          tickerHistory[tickerHistory.length - 2] === undefined ? (
+            <IoArrowUpOutline size="20px" color="green" />
+          ) : (
+            <IoArrowDownOutline size="20px" color="red" />
+          )}
           <ItemButton onClick={handleRemoveClick}>
             <IoTrashOutline size="20px" />
             <ButtonText>Delete</ButtonText>

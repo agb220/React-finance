@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List component Should create List component 1`] = `undefined`;
+
+exports[`List component Should create List component with empty ticker 1`] = `undefined`;
+
+exports[`List component Should create List component with ticker 1`] = `undefined`;

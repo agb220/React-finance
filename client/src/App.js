@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 
@@ -13,7 +13,9 @@ import "./App.css";
 function App() {
   const dispatch = useDispatch();
 
-  dispatch(socketTickers());
+  useEffect(() => {
+    dispatch(socketTickers());
+  }, []);
 
   return (
     <>
